@@ -1,0 +1,41 @@
+@use '../abstracts' as *;
+
+.settings-panel {
+  display: flex;
+  flex-direction: column;
+  gap: space(3);
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: space(3);
+}
+
+.settings-field {
+  display: flex;
+  flex-direction: column;
+  gap: space(1);
+  color: theme-color('text');
+  font-size: 12px;
+
+  input[type='range'],
+  input[type='number'],
+  select {
+    width: 100%;
+    max-width: 360px;
+    color: theme-color('text');
+    background: theme-color('surface-muted');
+    border: 1px solid theme-color('border');
+    border-radius: $radius-sm;
+  }
+
+  input[type='number'],
+  select {
+    padding: space(2);
+  }
+
+  small {
+    color: theme-color('text-muted');
+  }
+}

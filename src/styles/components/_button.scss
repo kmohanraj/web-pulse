@@ -1,0 +1,32 @@
+@use '../abstracts' as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: space(2);
+  padding: space(2) space(3);
+  border: 1px solid transparent;
+  border-radius: $radius-md;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color $transition-fast, opacity $transition-fast;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &--primary {
+    background: theme-color('primary');
+    color: theme-color('primary-contrast');
+
+    &:hover:not(:disabled) {
+      background: theme-color('primary-hover');
+    }
+  }
+
+  &--block {
+    width: 100%;
+  }
+}

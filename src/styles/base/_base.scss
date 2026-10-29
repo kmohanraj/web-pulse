@@ -1,0 +1,21 @@
+@use '../abstracts' as *;
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: 1.5;
+  background: theme-color('bg');
+  color: theme-color('text');
+  -webkit-font-smoothing: antialiased;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  word-break: break-all;
+  color: theme-color('text-muted');
+}
+
+:focus-visible {
+  @include focus-ring;
+}

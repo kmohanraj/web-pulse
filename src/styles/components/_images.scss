@@ -1,0 +1,124 @@
+@use '../abstracts' as *;
+
+.image-validation {
+  &__hint,
+  &__page {
+    color: theme-color('text-muted');
+    font-size: 12px;
+  }
+
+  &__page {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__actions {
+    display: flex;
+    gap: space(2);
+  }
+}
+
+.image-grid {
+  display: grid;
+  gap: space(2);
+}
+
+.image-card {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: space(2);
+  padding: space(2);
+  border: 1px solid theme-color('border');
+  border-radius: $radius-sm;
+  background: theme-color('surface');
+
+  &__body {
+    min-width: 0;
+  }
+
+  &__meta {
+    display: flex;
+    gap: space(2);
+    align-items: center;
+  }
+
+  &__view {
+    margin-left: auto;
+    padding: 2px space(2);
+    border: 1px solid theme-color('border');
+    border-radius: $radius-sm;
+    background: theme-color('surface');
+    color: theme-color('primary');
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+
+    &:hover {
+      background: theme-color('surface-muted');
+    }
+  }
+
+  &__code {
+    color: theme-color('text-muted');
+    font-size: 11px;
+  }
+
+  &__src {
+    display: block;
+    margin-top: space(1);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__recommendation {
+    margin: space(1) 0 0;
+    color: theme-color('text');
+    font-size: 12px;
+  }
+}
+
+.image-preview {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: $radius-sm;
+  background: theme-color('surface-muted');
+
+  &--empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: theme-color('text-muted');
+    font-size: 10px;
+    text-align: center;
+  }
+}
+
+.image-status {
+  display: inline-block;
+  padding: 1px space(2);
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  &--ok {
+    color: theme-color('success');
+    background: theme-color('surface-muted');
+  }
+
+  &--missing_alt {
+    color: theme-color('warning');
+    background: theme-color('surface-muted');
+  }
+
+  &--empty_src,
+  &--broken,
+  &--forbidden,
+  &--not_found {
+    color: theme-color('danger');
+    background: theme-color('surface-muted');
+  }
+}

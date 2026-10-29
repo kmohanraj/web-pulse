@@ -1,0 +1,126 @@
+@use '../abstracts' as *;
+
+.seo-report {
+  &__hint,
+  &__page {
+    color: theme-color('text-muted');
+    font-size: 12px;
+  }
+
+  &__page {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__actions {
+    display: flex;
+    gap: space(2);
+  }
+}
+
+.seo-score {
+  display: grid;
+  justify-items: center;
+  gap: space(1);
+  padding: space(3);
+  border: 1px solid theme-color('border');
+  border-radius: $radius-md;
+  background: theme-color('surface-muted');
+
+  &__value {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__label {
+    color: theme-color('text-muted');
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+
+  &--good &__value {
+    color: theme-color('success');
+  }
+
+  &--fair &__value {
+    color: theme-color('warning');
+  }
+
+  &--poor &__value {
+    color: theme-color('danger');
+  }
+}
+
+.seo-checks {
+  display: grid;
+  gap: space(2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.seo-check {
+  padding: space(2);
+  border: 1px solid theme-color('border');
+  border-radius: $radius-sm;
+
+  &__header {
+    display: flex;
+    gap: space(2);
+    align-items: center;
+
+    h3 {
+      margin: 0;
+      font-size: 13px;
+    }
+  }
+
+  &__badge {
+    padding: 1px space(2);
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    &--pass {
+      color: theme-color('success');
+      background: theme-color('surface-muted');
+    }
+
+    &--warning {
+      color: theme-color('warning');
+      background: theme-color('surface-muted');
+    }
+
+    &--fail {
+      color: theme-color('danger');
+      background: theme-color('surface-muted');
+    }
+  }
+
+  &__points {
+    margin-left: auto;
+    color: theme-color('text-muted');
+    font-size: 11px;
+  }
+
+  &__value,
+  &__recommendation {
+    margin: space(1) 0 0;
+    font-size: 12px;
+  }
+
+  &__value {
+    overflow: hidden;
+    color: theme-color('text');
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__recommendation {
+    color: theme-color('text-muted');
+    white-space: normal;
+  }
+}

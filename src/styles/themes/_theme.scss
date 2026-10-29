@@ -1,0 +1,15 @@
+@use '../abstracts' as *;
+@use 'light';
+@use 'dark';
+
+// Theme is applied through the data-theme attribute on <html>, set from Redux state.
+:root,
+[data-theme='light'] {
+  @include theme-vars(light.$theme);
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  @include theme-vars(dark.$theme);
+  color-scheme: dark;
+}

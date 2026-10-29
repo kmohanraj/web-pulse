@@ -1,0 +1,13 @@
+@use 'variables' as *;
+
+// Emits each token of a theme map as a --color-* custom property.
+@mixin theme-vars($tokens) {
+  @each $name, $value in $tokens {
+    --color-#{$name}: #{$value};
+  }
+}
+
+@mixin focus-ring {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

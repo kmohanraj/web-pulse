@@ -1,0 +1,213 @@
+@use '../abstracts' as *;
+
+.security-report {
+  &__hint,
+  &__page {
+    color: theme-color('text-muted');
+    font-size: 12px;
+  }
+
+  &__page {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__actions {
+    display: flex;
+    gap: space(2);
+  }
+}
+
+.security-charts {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: space(3);
+  align-items: center;
+}
+
+.security-score {
+  position: relative;
+  margin: 0;
+
+  svg {
+    display: block;
+    width: 120px;
+    height: 120px;
+    transform: rotate(-90deg);
+  }
+
+  &__track,
+  &__value {
+    fill: none;
+    stroke-width: 10;
+  }
+
+  &__track {
+    stroke: theme-color('surface-muted');
+  }
+
+  &__value {
+    stroke-linecap: round;
+  }
+
+  &--good &__value {
+    stroke: theme-color('success');
+  }
+
+  &--fair &__value {
+    stroke: theme-color('warning');
+  }
+
+  &--poor &__value {
+    stroke: theme-color('danger');
+  }
+
+  figcaption {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+
+    strong {
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    span {
+      color: theme-color('text-muted');
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.security-bars {
+  margin: 0;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  &__label,
+  &__points {
+    fill: theme-color('text-muted');
+    font-size: 10px;
+  }
+
+  &__track {
+    fill: theme-color('surface-muted');
+  }
+
+  &__fill--pass {
+    fill: theme-color('success');
+  }
+
+  &__fill--warning {
+    fill: theme-color('warning');
+  }
+
+  &__fill--fail {
+    fill: theme-color('danger');
+  }
+}
+
+.security-checks,
+.security-issues {
+  display: grid;
+  gap: space(2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.security-check {
+  padding: space(2);
+  border: 1px solid theme-color('border');
+  border-radius: $radius-sm;
+
+  &__header {
+    display: flex;
+    gap: space(2);
+    align-items: center;
+
+    h3 {
+      margin: 0;
+      font-size: 13px;
+    }
+  }
+
+  &__badge,
+  .security-issues__severity {
+    padding: 1px space(2);
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &__badge--pass {
+    color: theme-color('success');
+    background: theme-color('surface-muted');
+  }
+
+  &__badge--warning,
+  .security-issues__severity--warning {
+    color: theme-color('warning');
+    background: theme-color('surface-muted');
+  }
+
+  &__badge--fail,
+  .security-issues__severity--fail {
+    color: theme-color('danger');
+    background: theme-color('surface-muted');
+  }
+
+  &__points {
+    margin-left: auto;
+    color: theme-color('text-muted');
+    font-size: 11px;
+  }
+
+  &__value,
+  &__recommendation {
+    margin: space(1) 0 0;
+    font-size: 12px;
+  }
+
+  &__value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__recommendation {
+    color: theme-color('text-muted');
+  }
+}
+
+.security-issues {
+  margin-top: space(2);
+
+  li {
+    display: grid;
+    gap: space(1);
+    padding-top: space(1);
+    border-top: 1px solid theme-color('border');
+  }
+
+  &__target,
+  &__message {
+    overflow: hidden;
+    font-size: 12px;
+    text-overflow: ellipsis;
+  }
+
+  &__message {
+    color: theme-color('text-muted');
+    white-space: normal;
+  }
+}

@@ -1,0 +1,16 @@
+@use '../abstracts' as *;
+
+$theme: (
+  'bg': #f8fafc,
+  'surface': #ffffff,
+  'surface-muted': #f1f5f9,
+  'text': #0f172a,
+  'text-muted': #64748b,
+  'border': #e2e8f0,
+  'primary': $brand,
+  'primary-hover': $brand-hover,
+  'primary-contrast': #ffffff,
+  'success': $success,
+  'warning': $warning,
+  'danger': $danger,
+);

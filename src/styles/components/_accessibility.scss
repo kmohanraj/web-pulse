@@ -1,0 +1,157 @@
+@use '../abstracts' as *;
+
+.a11y-report {
+  &__hint,
+  &__page {
+    color: theme-color('text-muted');
+    font-size: 12px;
+  }
+
+  &__page {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__actions {
+    display: flex;
+    gap: space(2);
+  }
+}
+
+.a11y-score {
+  display: grid;
+  justify-items: center;
+  gap: space(1);
+  padding: space(3);
+  border: 1px solid theme-color('border');
+  border-radius: $radius-md;
+  background: theme-color('surface-muted');
+
+  &__value {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__label {
+    color: theme-color('text-muted');
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+
+  &--good &__value {
+    color: theme-color('success');
+  }
+
+  &--fair &__value {
+    color: theme-color('warning');
+  }
+
+  &--poor &__value {
+    color: theme-color('danger');
+  }
+}
+
+.a11y-checks,
+.a11y-issues {
+  display: grid;
+  gap: space(2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.a11y-check {
+  padding: space(2);
+  border: 1px solid theme-color('border');
+  border-radius: $radius-sm;
+
+  &__header {
+    display: flex;
+    gap: space(2);
+    align-items: center;
+
+    h3 {
+      margin: 0;
+      font-size: 13px;
+    }
+  }
+
+  &__badge,
+  .a11y-issues__severity {
+    padding: 1px space(2);
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &__badge--pass {
+    color: theme-color('success');
+    background: theme-color('surface-muted');
+  }
+
+  &__badge--warning,
+  .a11y-issues__severity--warning {
+    color: theme-color('warning');
+    background: theme-color('surface-muted');
+  }
+
+  &__badge--fail,
+  .a11y-issues__severity--fail {
+    color: theme-color('danger');
+    background: theme-color('surface-muted');
+  }
+
+  &__points {
+    margin-left: auto;
+    color: theme-color('text-muted');
+    font-size: 11px;
+  }
+
+  &__value,
+  &__recommendation {
+    margin: space(1) 0 0;
+    font-size: 12px;
+  }
+
+  &__value {
+    overflow: hidden;
+    color: theme-color('text');
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__recommendation {
+    color: theme-color('text-muted');
+  }
+}
+
+.a11y-issues {
+  margin-top: space(2);
+
+  li {
+    display: grid;
+    gap: space(1);
+    padding-top: space(1);
+    border-top: 1px solid theme-color('border');
+  }
+
+  &__target,
+  &__message {
+    overflow: hidden;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__target {
+    color: theme-color('text');
+  }
+
+  &__message {
+    color: theme-color('text-muted');
+    white-space: normal;
+  }
+}

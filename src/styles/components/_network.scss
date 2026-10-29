@@ -1,0 +1,48 @@
+@use '../abstracts' as *;
+
+.network-monitor {
+  &__hint,
+  &__page {
+    color: theme-color('text-muted');
+    font-size: 12px;
+  }
+
+  &__page {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__toolbar {
+    display: flex;
+    gap: space(2);
+    align-items: center;
+  }
+
+  &__search {
+    flex: 1;
+    min-width: 0;
+    padding: space(2);
+    border: 1px solid theme-color('border');
+    border-radius: $radius-sm;
+    background: theme-color('surface');
+    color: theme-color('text');
+    font: inherit;
+  }
+}
+
+.network-table {
+  .link-table__url {
+    max-width: 240px;
+  }
+}
+
+@media (max-width: 720px) {
+  .network-monitor__toolbar {
+    flex-wrap: wrap;
+  }
+
+  .network-monitor__search {
+    flex-basis: 100%;
+  }
+}

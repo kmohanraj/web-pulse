@@ -1,0 +1,33 @@
+@use '../abstracts' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: space(3);
+  padding: space(3);
+  background: theme-color('surface');
+  border: 1px solid theme-color('border');
+  border-radius: $radius-md;
+
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: space(2);
+
+    h2 {
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: space(2);
+  font-size: 12px;
+  color: theme-color('text-muted');
+  cursor: pointer;
+}

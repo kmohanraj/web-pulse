@@ -1,0 +1,11 @@
+@use 'variables' as *;
+
+// Spacing scale based on $base-unit (space(2) = 8px).
+@function space($multiplier) {
+  @return $base-unit * $multiplier;
+}
+
+// Reads a themed color token exposed as a CSS custom property.
+@function theme-color($name) {
+  @return var(--color-#{$name});
+}

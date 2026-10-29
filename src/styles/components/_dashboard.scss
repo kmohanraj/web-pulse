@@ -1,0 +1,214 @@
+@use '../abstracts' as *;
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: space(3);
+  min-width: 0;
+}
+
+.health-breakdown {
+  display: grid;
+  gap: space(2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr) 28px;
+    gap: space(2);
+    align-items: center;
+    font-size: 12px;
+  }
+
+  &__track {
+    height: 6px;
+    overflow: hidden;
+    background: theme-color('surface-muted');
+    border-radius: $radius-sm;
+
+    span {
+      display: block;
+      height: 100%;
+      background: theme-color('primary');
+    }
+  }
+}
+
+.health-summary {
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr);
+  align-items: center;
+  gap: space(3);
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: space(2);
+    min-width: 0;
+  }
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: space(2);
+
+    h2 {
+      font-size: 14px;
+    }
+  }
+
+  &__page {
+    overflow: hidden;
+    color: theme-color('text-muted');
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.health-score {
+  --score: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: conic-gradient(theme-color('primary') calc(var(--score) * 1%), theme-color('surface-muted') 0);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    background: theme-color('surface');
+  }
+
+  span {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__value {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  &__label {
+    font-size: 10px;
+    color: theme-color('text-muted');
+  }
+
+  &--success {
+    background: conic-gradient(theme-color('success') calc(var(--score) * 1%), theme-color('surface-muted') 0);
+  }
+
+  &--warning {
+    background: conic-gradient(theme-color('warning') calc(var(--score) * 1%), theme-color('surface-muted') 0);
+  }
+
+  &--danger {
+    background: conic-gradient(theme-color('danger') calc(var(--score) * 1%), theme-color('surface-muted') 0);
+  }
+}
+
+.health-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: space(2);
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: space(2);
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  gap: space(1);
+  min-width: 0;
+  padding: space(3);
+  border: 1px solid theme-color('border');
+  border-radius: $radius-md;
+  background: theme-color('surface');
+  color: theme-color('text');
+  text-align: left;
+  cursor: pointer;
+
+  &:hover,
+  &.is-selected {
+    border-color: theme-color('primary');
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: space(2);
+  }
+
+  &__title {
+    font-weight: 700;
+  }
+
+  &__status,
+  &__description,
+  &__stats {
+    color: theme-color('text-muted');
+    font-size: 11px;
+  }
+
+  &__stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space(2);
+  }
+
+  &--failed &__status {
+    color: theme-color('danger');
+  }
+
+  &--attention &__status {
+    color: theme-color('warning');
+  }
+
+  &--passed &__status {
+    color: theme-color('success');
+  }
+}
+
+.badge--muted {
+  background: theme-color('surface-muted');
+  color: theme-color('text');
+}
+
+.dashboard-findings__empty {
+  color: theme-color('text-muted');
+  font-size: 12px;
+}
+
+@media (max-width: 420px) {
+  .health-summary,
+  .health-metrics,
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 960px) {
+  .category-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .health-metrics {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

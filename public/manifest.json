@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "WebPulse QA",
+  "short_name": "WebPulse",
+  "version": "1.0.0",
+  "description": "Universal website validator for QA: link health, accessibility hints and API call monitoring.",
+  "minimum_chrome_version": "116",
+  "permissions": ["activeTab", "scripting", "storage", "webRequest", "cookies"],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "action": {
+    "default_title": "WebPulse QA"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["popup.html"],
+      "matches": ["http://*/*", "https://*/*"]
+    }
+  ],
+  "background": {
+    "service_worker": "assets/background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["assets/networkHook.js"],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": true
+    },
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["assets/networkBridge.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; img-src 'self' data: blob: http: https:"
+  }
+}

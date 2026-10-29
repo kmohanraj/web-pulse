@@ -1,0 +1,14 @@
+@use '../abstracts' as *;
+
+.alert {
+  padding: space(2) space(3);
+  border: 1px solid transparent;
+  border-radius: $radius-sm;
+  font-size: 12px;
+
+  &--error {
+    background: rgba($danger, 0.1);
+    border-color: rgba($danger, 0.4);
+    color: theme-color('danger');
+  }
+}
